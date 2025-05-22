@@ -1,13 +1,17 @@
 const cards = document.querySelectorAll('.memory-card');
+const scoreDiv = document.querySelector('.score');
+const resetBtn = document.querySelector('#reset');
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+let number = 0;
 
 function flipCard() {
 	if (lockBoard) return;
 
 	if (this === firstCard) return;
+
 	this.classList.add('flip');
 
 	if (!hasFlippedCard) {
@@ -22,10 +26,10 @@ function flipCard() {
 }
 
 function checkForMatch() {
-	let isMatch =
+	const isMatch =
 		firstCard.dataset.framework === secondCard.dataset.framework
 			? disableCard()
-			: unflipCards();
+			: unflipCard();
 }
 
 function disableCard() {
@@ -35,15 +39,19 @@ function disableCard() {
 	secondCard.classList.add('disabled');
 	firstCard.style.cursor = 'not-allowed';
 	secondCard.style.cursor = 'not-allowed';
+	number++;
+	checkWinCondition();
+	updateScore();
 }
 
-function unflipCards() {
-	lockBoard = !lockBoard;
+function unflipCard() {
+	lockBoard = true;
 	setTimeout(() => {
 		firstCard.classList.remove('flip');
 		secondCard.classList.remove('flip');
-
 		resetBoard();
+		number++;
+		updateScore();
 	}, 1200);
 }
 
@@ -52,12 +60,62 @@ function resetBoard() {
 	[firstCard, secondCard] = [null, null];
 }
 
-(function shuffling() {
+function shuffling() {
 	cards.forEach(card => {
 		const index = Math.floor(Math.random() * 12);
-
 		card.style.order = index;
 	});
-})();
+}
+
+function updateScore() {
+	scoreDiv.innerHTML = `
+	Liczba prób: 
+<span class="score-number">${number}</span> 
+	`;
+}
+
+function checkWinCondition() {
+	const allDisabled = [...cards].every(card =>
+		card.classList.contains('disabled')
+	);
+	if (allDisabled) {
+		const popup = document.createElement('div');
+		popup.classList.add('popup');
+		popup.classList.add('visible');
+
+		popup.innerHTML = `
+		<h2>🎉 Wygrałeś!<h2>
+		<button class="close-popup">Reset</button>
+		`;
+
+		popup.style.left = '0';
+
+		const closeBtn = popup
+			.querySelector('.close-popup')
+			.addEventListener('click', () => {
+				popup.classList.remove('visible');
+				resetGame();
+			});
+
+		document.body.append(popup);
+	}
+}
+
+function resetGame() {
+	cards.forEach(card => {
+		card.classList.remove('flip');
+		card.addEventListener('click', flipCard);
+		card.style.cursor = 'pointer';
+	});
+
+	number = 0;
+	updateScore();
+	resetBoard();
+	shuffling();
+}
+
+resetBtn.addEventListener('click', resetGame);
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+updateScore();
+shuffling();

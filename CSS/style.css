@@ -56,11 +56,100 @@ body .memory-game .memory-card .back-face {
   backface-visibility: hidden;
   transition: 300ms ease;
 }
+body .memory-game .memory-card .front-face:hover,
+body .memory-game .memory-card .back-face:hover {
+  background-color: #9dafff;
+}
 body .memory-game .memory-card .front-face {
   transform: rotateY(180deg);
 }
 body .memory-game .memory-card.disabled .front-face {
-  opacity: 0.85;
+  opacity: 0.75;
+  pointer-events: none;
+}
+body .bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  margin-top: 30px;
+}
+body .bottom-section .score {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #020024;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+  font-size: 22px;
+  font-weight: 400;
+  color: #020024;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+body .bottom-section .score .score-number {
+  font-size: 26px;
+  font-weight: 700;
+}
+body .bottom-section .reset-btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 20px;
+  background-color: #020024;
+  border-radius: 6px;
+  border: 1px solid #474747;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+  font-size: 22px;
+  font-weight: 400;
+  color: #ffffff;
+  transition: 300ms ease;
+}
+body .bottom-section .reset-btn:hover {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9), 4px 4px 15px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.1em;
+  border: 1px solid #6e6e6e;
+}
+body .popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  z-index: 9999;
+  left: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 500ms ease;
+}
+body .popup .close-popup {
+  cursor: pointer;
+  display: inline-block;
+  padding: 20px;
+  background-color: #020024;
+  border-radius: 6px;
+  border: 1px solid #474747;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+  font-size: 22px;
+  font-weight: 400;
+  color: #ffffff;
+  transition: 300ms ease;
+  margin-top: 30px;
+}
+body .popup .close-popup:hover {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9), 4px 4px 15px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.1em;
+  border: 1px solid #6e6e6e;
+}
+body .popup.visible {
+  opacity: 1;
+  left: 0;
+  visibility: visible;
 }
 
 @media (max-width: 1000px) {
