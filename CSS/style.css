@@ -6,6 +6,7 @@
 }
 
 body {
+  padding: 50px 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -20,8 +21,8 @@ body h2 {
   margin-bottom: 20px;
 }
 body .memory-game {
-  width: 840px;
-  height: 650px;
+  width: 780px;
+  height: 590px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -30,7 +31,7 @@ body .memory-game {
 }
 body .memory-game .memory-card {
   cursor: pointer;
-  margin: 5px;
+  margin: 2.5px;
   position: relative;
   transform: scale(1);
   transform-style: preserve-3d;
@@ -72,7 +73,7 @@ body .bottom-section {
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 body .bottom-section .score {
   padding: 20px;
