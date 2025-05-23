@@ -69,7 +69,7 @@ function shuffling() {
 
 function updateScore() {
 	scoreDiv.innerHTML = `
-	Liczba prób: 
+	Attempts: 
 <span class="score-number">${number}</span> 
 	`;
 }
@@ -84,8 +84,17 @@ function checkWinCondition() {
 		popup.classList.add('visible');
 
 		popup.innerHTML = `
-		<h2>🎉 Wygrałeś!<h2>
-		<button class="close-popup">Reset</button>
+		<div class="popup-wrapper">
+				<div class="title">
+					<img src="images/winner.png" alt="" />
+					<h3>You won!!</h3>
+				</div>
+				<span class="score-number-span"
+					>Twoja liczba ruchów to
+					<span id="score-number">${number}</span></span
+				>
+				<button class="close-popup">Reset</button>
+			</div>
 		`;
 
 		popup.style.left = '0';
@@ -106,6 +115,7 @@ function resetGame() {
 		card.classList.remove('flip');
 		card.addEventListener('click', flipCard);
 		card.style.cursor = 'pointer';
+		card.classList.remove('disabled');
 	});
 
 	number = 0;
