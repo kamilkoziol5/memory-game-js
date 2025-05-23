@@ -6,7 +6,6 @@
 }
 
 body {
-  padding: 50px 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -20,9 +19,59 @@ body h2 {
   color: #fff;
   margin-bottom: 20px;
 }
+body .top-info-container {
+  margin-bottom: 17.5px;
+  text-align: center;
+}
+body .bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 15px 100px;
+  border-radius: 14px;
+  background-color: #eeeeee;
+}
+body .bottom-section .score {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #020024;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+  font-size: 22px;
+  font-weight: 400;
+  color: #020024;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+body .bottom-section .score .score-number {
+  font-size: 26px;
+  font-weight: 700;
+}
+body .bottom-section .reset-btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 20px;
+  background-color: #1f1b63;
+  border-radius: 6px;
+  border: 1px solid #474747;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+  font-size: 22px;
+  font-weight: 400;
+  color: #ffffff;
+  transition: 300ms ease;
+}
+body .bottom-section .reset-btn:hover {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9), 4px 4px 15px rgba(0, 0, 0, 0.7);
+  border: 1px solid #6e6e6e;
+  background-color: #020024;
+  transform: scale(1.02);
+}
 body .memory-game {
-  width: 780px;
-  height: 590px;
+  width: 640px;
+  height: 490px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -67,50 +116,6 @@ body .memory-game .memory-card .front-face {
 body .memory-game .memory-card.disabled .front-face {
   opacity: 0.75;
   pointer-events: none;
-}
-body .bottom-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 50px;
-  margin-top: 20px;
-}
-body .bottom-section .score {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 6px;
-  border: 1px solid #020024;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
-  font-size: 22px;
-  font-weight: 400;
-  color: #020024;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  pointer-events: none;
-}
-body .bottom-section .score .score-number {
-  font-size: 26px;
-  font-weight: 700;
-}
-body .bottom-section .reset-btn {
-  cursor: pointer;
-  display: inline-block;
-  padding: 20px;
-  background-color: #1f1b63;
-  border-radius: 6px;
-  border: 1px solid #474747;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
-  font-size: 22px;
-  font-weight: 400;
-  color: #ffffff;
-  transition: 300ms ease;
-}
-body .bottom-section .reset-btn:hover {
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9), 4px 4px 15px rgba(0, 0, 0, 0.7);
-  border: 1px solid #6e6e6e;
-  background-color: #020024;
-  transform: scale(1.02);
 }
 body .popup {
   position: fixed;
@@ -192,20 +197,29 @@ body .popup.visible {
   visibility: visible;
 }
 
-@media (max-width: 1000px) {
-  body .memory-game {
-    width: 650px;
-    height: 500px;
-  }
-}
 @media (max-width: 670px) {
+  body h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
   body .memory-game {
     width: 400px;
     height: 320px;
   }
-  body h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
+  body .bottom-section {
+    gap: 30px;
+    padding: 10px 40px;
+  }
+  body .bottom-section .score {
+    padding: 10px;
+    font-size: 16px;
+  }
+  body .bottom-section .score .score-number {
+    font-size: 22px;
+  }
+  body .bottom-section .reset-btn {
+    padding: 10px;
+    font-size: 16px;
   }
   body .popup .popup-wrapper {
     padding: 25px;
@@ -222,8 +236,25 @@ body .popup.visible {
 }
 @media (max-width: 410px) {
   body .memory-game {
-    height: 420px;
-    grid-template-columns: 110px 110px 110px;
+    height: 450px;
+    width: 350px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+  body .bottom-section {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 25px;
+    margin: 0 auto;
+    width: -moz-max-content;
+    width: max-content;
+  }
+}
+@media (max-width: 350px) {
+  body .memory-game {
+    height: 350px;
+    width: 250px;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
   }
 }/*# sourceMappingURL=style.css.map */
