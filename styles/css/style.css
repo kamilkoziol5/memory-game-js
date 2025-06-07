@@ -6,7 +6,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,6 +223,7 @@ body .popup.visible {
   }
   body .popup .popup-wrapper {
     padding: 25px;
+    width: 80vw;
   }
   body .popup .popup-wrapper .title {
     gap: 10px;
@@ -232,6 +233,10 @@ body .popup.visible {
     padding: 15px;
     font-size: 16px;
     margin-top: 10px;
+  }
+  body .popup .popup-wrapper .score-number-span {
+    line-height: 2.8rem;
+    text-align: center;
   }
 }
 @media (max-width: 410px) {
@@ -251,6 +256,9 @@ body .popup.visible {
   }
 }
 @media (max-width: 350px) {
+  body .popup .popup-wrapper {
+    padding: 10px;
+  }
   body .memory-game {
     height: 350px;
     width: 250px;
